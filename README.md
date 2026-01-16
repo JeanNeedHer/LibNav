@@ -43,13 +43,13 @@ The system is optimized for **Mobile Devices** (PWA support) and **Public Librar
 
 ## 📸 Screenshots
 
-| Home Screen (Dark) | Search & Filters |
+| Home Screen | Search & Filters |
 |:---:|:---:|
-| ![Home Screen](/Screenshot_20260116-004255.png) | ![Filters](path/to/your/screenshot2.png) |
+| ![Home Screen](/assets/home.png) | ![Filters](/assets/filter.png) |
 
 | Book Details & Map | Statistics Modal |
 |:---:|:---:|
-| ![Book Details](path/to/your/screenshot3.png) | ![Stats](path/to/your/screenshot4.png) |
+| ![Book Details](/assets/bookd.png) | ![Stats](/assets/stats.png) |
 
 
 ---
