@@ -1,5 +1,12 @@
 # 📚 LibNav - Library Map Navigation System
 
+## ⚖️ License & Usage
+
+This project is open-source under the **MIT License**.
+Feel free to use or modify this code for your own projects, but **you must give appropriate credit** to the original author.
+
+**Credits to:** Jean
+
 ![LibNav Banner](https://placehold.co/1000x300/0b1121/ffc4d6?text=LibNav+Project)
 
 **LibNav** is a modern, static web application designed to help students and visitors locate books within a library. It is built as a **Single Page Application (SPA)** using pure Vanilla JavaScript, requiring no backend server.
