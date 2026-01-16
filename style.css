@@ -1,9 +1,8 @@
-/* style.css - Colors Restored & Glow Effects */
+/* style.css - Logo Right, Menu Left */
 
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Klee+One&display=swap');
 
 :root {
-    /* ORIGINAL COLORS RESTORED FROM SCREENSHOTS */
     --primary-pink: #ffc4d6; 
     --primary-pink-dim: #fda4af; 
     --bg-main: #0b1121;
@@ -13,12 +12,11 @@
     --text-muted: #94a3b8;
     --border-color: #334155;
     
-    --font-head: 'Gloria Hallelujah', cursive;
-    --font-body: 'Klee One', cursive;
+    --font-head: 'Gloria Hallelujah', 'Comic Sans MS', cursive;
+    --font-body: 'Klee One', 'Comic Sans MS', cursive;
     
     --radius: 20px;
     --shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
-    /* Bouncy smooth animation */
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -44,15 +42,37 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Top Bar & Navigation --- */
+/* --- Top Bar & Navigation (UPDATED) --- */
 .top-controls {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 0;
+    left: 0;
+    right: 0; /* Spans full width */
+    padding: 20px;
     z-index: 100;
+    display: flex;
+    justify-content: space-between; /* Pushes left group and logo apart */
+    align-items: center;
+    pointer-events: none; /* Allows clicking through empty space */
+}
+
+/* Container for left buttons to keep them together */
+.left-controls {
     display: flex;
     gap: 15px;
     align-items: center;
+    pointer-events: auto; /* Re-enable clicking for buttons */
+}
+
+/* Header Logo (Now Top Right) */
+.header-logo {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    color: var(--primary-pink);
+    cursor: default;
+    text-shadow: 0 0 10px rgba(255, 196, 214, 0.5);
+    margin: 0;
+    pointer-events: auto;
 }
 
 .nav-btn {
@@ -70,24 +90,24 @@ body {
 }
 .nav-btn svg { width: 24px; height: 24px; }
 
-/* Hover Glow for Nav Buttons */
 .nav-btn:hover, .nav-btn:active {
     color: var(--primary-pink);
     border-color: var(--primary-pink);
-    box-shadow: 0 0 15px rgba(255, 196, 214, 0.4); /* Pink Glow */
+    box-shadow: 0 0 15px rgba(255, 196, 214, 0.4); 
     transform: scale(1.05);
 }
 
-/* Home Button Specifics */
 #home-btn {
     background: rgba(255, 196, 214, 0.1);
     color: var(--primary-pink);
     border: 1px solid var(--primary-pink);
+    opacity: 1;
+    transform: translateY(0);
 }
 .home-hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-20px);
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateX(-20px) !important;
 }
 
 /* --- Side Menu --- */
@@ -119,11 +139,11 @@ body {
 .quick-btn.wide:hover {
     background: var(--bg-chip); border-color: var(--primary-pink);
     color: var(--primary-pink); transform: translateX(5px);
-    box-shadow: 0 0 12px rgba(255, 196, 214, 0.3); /* Button Glow */
+    box-shadow: 0 0 12px rgba(255, 196, 214, 0.3);
 }
 .quick-btn.wide.active {
     background: var(--primary-pink); color: var(--bg-main); font-weight: bold; transform: translateX(5px);
-    box-shadow: 0 0 15px var(--primary-pink); /* Stronger Glow */
+    box-shadow: 0 0 15px var(--primary-pink);
 }
 
 .menu-overlay {
@@ -137,7 +157,6 @@ body {
 /* --- Main Layout --- */
 .container { max-width: 500px; margin: 0 auto; padding: 20px; margin-top: 80px; }
 
-/* HERO TEXT RESTORED & GLOWING */
 .hero { text-align: center; margin-bottom: 35px; transition: all 0.5s var(--ease-bounce); }
 .hero.minimized { height: 0; margin: 0; opacity: 0; overflow: hidden; transform: scale(0.8); }
 
@@ -145,8 +164,7 @@ body {
     font-family: var(--font-head);
     font-size: 3.5rem; 
     margin-bottom: 5px; 
-    color: var(--primary-pink); /* Restored Pink Color */
-    /* Smooth Glow Animation */
+    color: var(--primary-pink);
     text-shadow: 0 0 15px rgba(255, 196, 214, 0.4); 
     transition: text-shadow 0.3s ease;
 }
@@ -184,7 +202,6 @@ input#search-input:focus {
 }
 .icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
-/* Filter Dropdown */
 .filter-dropdown {
     position: absolute; top: 115%; right: 0;
     background: var(--bg-card); border: 1px solid var(--border-color);
@@ -206,13 +223,11 @@ input#search-input:focus {
 .filter-option input:checked + .checkmark { background: var(--primary-pink); border-color: var(--primary-pink); }
 .filter-option input:checked + .checkmark::after { display: block; }
 
-/* Results & Cards */
 #results-area { display: flex; flex-direction: column; gap: 18px; padding-bottom: 100px; }
 .book-card {
     background: var(--bg-card); padding: 22px; border-radius: var(--radius);
     display: flex; justify-content: space-between; align-items: center;
     cursor: pointer; border: 1px solid transparent; opacity: 0;
-    /* Smooth entrance animation */
     animation: fadeInUp 0.6s var(--ease-bounce) forwards; 
     transition: transform 0.2s, background-color 0.2s;
     position: relative;
@@ -229,7 +244,6 @@ input#search-input:focus {
 .fav-btn.active svg { fill: #ef4444; stroke: #ef4444; }
 .fav-btn svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; transition: all 0.2s; }
 
-/* Featured */
 .featured-section { margin-bottom: 30px; animation: fadeInUp 0.6s var(--ease-bounce); }
 .featured-label { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; display: block; }
 .featured-card {
@@ -239,13 +253,13 @@ input#search-input:focus {
     transition: transform 0.3s;
 }
 .featured-card::before {
-    content: "★ Daily Pick"; position: absolute; top: 15px; right: 15px;
+    content: "★ Daily Pick"; 
+    position: absolute; top: 15px; right: 15px;
     background: var(--primary-pink); color: var(--bg-main);
     font-size: 0.7rem; font-weight: bold; padding: 5px 10px; border-radius: 10px;
 }
 .featured-card:hover { transform: translateY(-3px); border-color: var(--primary-pink); box-shadow: 0 10px 20px -5px rgba(255, 196, 214, 0.2); }
 
-/* Modal */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1000;
 }
@@ -257,26 +271,25 @@ input#search-input:focus {
 .map-img { width: 100%; border-radius: 20px; margin: 20px 0; border: 3px solid var(--bg-chip); }
 .close-modal { position: absolute; top: 20px; right: 20px; background: var(--bg-chip); width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; border: none; color: var(--text-main); }
 
-/* Neighbor Chips */
 .neighbors-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .neighbor-chip {
     display: inline-block; background: var(--bg-chip); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 18px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: var(--text-muted);
 }
 .neighbor-chip:hover { background: var(--border-color); color: var(--primary-pink); transform: translateY(-2px); }
 
-/* Floating Buttons */
 .floating-actions { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 90; }
 .float-btn {
     width: 55px; height: 55px; border-radius: 20px; background: var(--bg-card); border: 1px solid var(--border-color); box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; color: var(--primary-pink); transition: 0.3s var(--ease-bounce);
 }
 .float-btn:hover { 
     transform: scale(1.1) rotate(5deg); 
-    box-shadow: 0 0 15px rgba(255, 196, 214, 0.5); /* Glow on Hover */
+    box-shadow: 0 0 15px rgba(255, 196, 214, 0.5); 
 }
 .float-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
 .screensaver { position: fixed; inset: 0; background: rgba(11, 17, 33, 0.95); backdrop-filter: blur(10px); z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out; cursor: pointer; }
 .screensaver.active { opacity: 1; pointer-events: all; }
+.screensaver h1 { font-family: 'Gloria Hallelujah', 'Comic Sans MS', cursive; font-size: 4rem; color: var(--primary-pink); margin-bottom: 20px; text-shadow: 0 0 30px rgba(255, 196, 214, 0.5); }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes menuSlide { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
